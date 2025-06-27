@@ -2264,6 +2264,8 @@ DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_4x8__sse_load1)
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_5x8__sse_load1)
+DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
+    xnn_f32_gemminc_minmax_ukernel_6x8__sse_load1)
 
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_1x8__sse_dup)
@@ -2273,6 +2275,8 @@ DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_4x8__sse_dup)
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_5x8__sse_dup)
+DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
+    xnn_f32_gemminc_minmax_ukernel_6x8__sse_dup)
 
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_1x8s4__sse)
@@ -2282,6 +2286,8 @@ DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_4x8s4__sse)
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_5x8s4__sse)
+DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
+    xnn_f32_gemminc_minmax_ukernel_6x8s4__sse)
 
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_1x8__avx_broadcast)
@@ -2299,6 +2305,8 @@ DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_5x16__avx_broadcast)
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_6x8__avx_broadcast)
+DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
+    xnn_f32_gemminc_minmax_ukernel_6x16__avx_broadcast)
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_7x8__avx_broadcast)
 
@@ -2319,6 +2327,8 @@ DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_6x8__fma3_broadcast)
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
+    xnn_f32_gemminc_minmax_ukernel_6x16__fma3_broadcast)
+DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_7x8__fma3_broadcast)
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_8x8__fma3_broadcast)
@@ -2331,6 +2341,8 @@ DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_4x16s4__fma3_broadcast)
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_5x16s4__fma3_broadcast)
+DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
+    xnn_f32_gemminc_minmax_ukernel_6x16s4__fma3_broadcast)
 
 DECLARE_F32_GEMMINC_MINMAX_UKERNEL_FUNCTION(
     xnn_f32_gemminc_minmax_ukernel_1x16__avx512f_broadcast)
@@ -4288,6 +4300,9 @@ DECLARE_QP8_F32_QC4W_GEMM_MINMAX_UKERNEL_FUNCTION(
 DECLARE_QP8_F32_QC4W_GEMM_MINMAX_UKERNEL_FUNCTION(
     xnn_qp8_f32_qc4w_gemm_minmax_ukernel_16x64c4__neonsme2)
 
+size_t xnn_qp8_f32_qc8w_gemm_minmax_ukernel_16x64c4__neonsme2_get_mr();
+size_t xnn_qp8_f32_qc8w_gemm_minmax_ukernel_16x64c4__neonsme2_get_nr();
+
 #define DECLARE_QP8_F32_QC8W_GEMM_MINMAX_UKERNEL_FUNCTION(fn_name) \
   XNN_INTERNAL void fn_name(                                       \
       size_t m, size_t n, size_t k, const void* lhs_packed,        \
@@ -4302,6 +4317,10 @@ DECLARE_QP8_F32_QC8W_GEMM_MINMAX_UKERNEL_FUNCTION(
     xnn_qp8_f32_qc8w_gemm_minmax_ukernel_1x4c4__aarch64_neondot)
 DECLARE_QP8_F32_QC8W_GEMM_MINMAX_UKERNEL_FUNCTION(
     xnn_qp8_f32_qc8w_gemm_minmax_ukernel_1x4c8__aarch64_neondot)
+DECLARE_QP8_F32_QC8W_GEMM_MINMAX_UKERNEL_FUNCTION(
+    xnn_qp8_f32_qc8w_gemm_minmax_ukernel_1x64c4__neonsme2)
+DECLARE_QP8_F32_QC8W_GEMM_MINMAX_UKERNEL_FUNCTION(
+    xnn_qp8_f32_qc8w_gemm_minmax_ukernel_16x64c4__neonsme2)
 
 #define DECLARE_QP8_F32_QB4W_GEMM_MINMAX_UKERNEL_FUNCTION(fn_name) \
   XNN_INTERNAL void fn_name(                                       \
@@ -4310,6 +4329,10 @@ DECLARE_QP8_F32_QC8W_GEMM_MINMAX_UKERNEL_FUNCTION(
       size_t dst_stride_col,                                       \
       const struct xnn_f32_qb4w_minmax_params* minmax_params);
 
+DECLARE_QP8_F32_QB4W_GEMM_MINMAX_UKERNEL_FUNCTION(
+    xnn_qp8_f32_qb4w_gemm_minmax_ukernel_1x4c8s2__aarch64_neondot)
+DECLARE_QP8_F32_QB4W_GEMM_MINMAX_UKERNEL_FUNCTION(
+    xnn_qp8_f32_qb4w_gemm_minmax_ukernel_4x4c8s2__aarch64_neondot)
 DECLARE_QP8_F32_QB4W_GEMM_MINMAX_UKERNEL_FUNCTION(
     xnn_qp8_f32_qb4w_gemm_minmax_ukernel_1x4c16s2__aarch64_neondot)
 DECLARE_QP8_F32_QB4W_GEMM_MINMAX_UKERNEL_FUNCTION(

@@ -207,12 +207,16 @@ def main(args):
       subdir = os.path.relpath(root, root_dir)
       filepath = os.path.join(subdir, name)
 
+      # Skip files created by repository tools.
+      if (
+          name.startswith('._')
+          or filepath.endswith('.swp')
+          or filepath.endswith('.orig')
+      ):
+        continue
+
       # Build microkernel name -> microkernel filepath mapping
       with open(os.path.join(root_dir, filepath), 'r', encoding='utf-8') as f:
-        if filepath.endswith('.swp'):
-          continue
-        if filepath.endswith('.orig'):
-          continue
         content = f.read()
         microkernels = re.findall(_MICROKERNEL_NAME_REGEX, content)
         if not microkernels:
